@@ -308,8 +308,9 @@ public class SchiffeVersenken {
             System.out.println("Du hast noch" + cruiserCount+ "Kreuzer!");
             System.out.println("Du hast noch" + destroyerCount + "Zerstoerer!");
             System.out.println("Du hast noch" + submarineCount + "U-Boote!");
+            System.out.print("Was moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
             
-        } while {counter == 1};
+        } while {!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0)};
     }
 
     /**
