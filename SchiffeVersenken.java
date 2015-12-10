@@ -299,7 +299,7 @@ public class SchiffeVersenken {
         int input;
         
         int battleshipCount, cruiserCount, destroyerCount, submarineCount;
-        
+
         battleshipCount = BATTLESHIP;
         cruiserCount = CRUISER;
         destroyerCount = DESTROYER;
@@ -345,7 +345,7 @@ public class SchiffeVersenken {
                         break;
                 }
             } while (counter == 1);
-            
+        
         } while (!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0));
     }
     
@@ -434,8 +434,6 @@ public class SchiffeVersenken {
             }
                         
         } while (conflict = true);
-        
-        
     }
 
     /**
