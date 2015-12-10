@@ -357,6 +357,7 @@ public class SchiffeVersenken {
     public static void setBattleshipsInArray(int shipLength) {
         
         boolean conflict = false;
+		int input, row, col;
     
         System.out.print("Die Schiffe werden horizontal oder vertikal von der gewaehlten Koordinate aus platziert!");
         do {
@@ -392,7 +393,7 @@ public class SchiffeVersenken {
                 } while (!(row >= 0 && col <= 9 - shipLength));
                 
                 // Ueberpruefung auf bereits gesetzte Schiffe.
-                for (int i = col; col + shipLength - 1; i++) {
+                for (int i = col; i <= col + shipLength - 1; i++) {
                     if (player[row][i] == '#') {
                         conflict = true;
                         int failedRow = row;
@@ -401,11 +402,11 @@ public class SchiffeVersenken {
                     }
                 }
                 if (conflict == false){
-                    for (int i = col; col + shipLength - 1; i++) {
+                    for (int i = col; i <= col + shipLength - 1; i++) {
                         player[row][i] = '#';
                     } 
                 }
-            } while (conflict = true); 
+            } while (conflict == true); 
         }
         
         else {
@@ -431,9 +432,24 @@ public class SchiffeVersenken {
                         System.out.print("Ungueltige Eingabe! \nNochmal: ");
                     }
                 } while (!(row >= 0 && col <= 9));
-            }
+                 // Ueberpruefung auf bereits gesetzte Schiffe.
+                for (int i = row; i <= row + shipLength - 1; i++) {
+
+                    if (player[i][col] == '#') {
+                        conflict = true;
+                        int failedRow = i;
+                        int failedCol = col;
+                        System.out.println("Es liegt bereits ein Schiff an Zeile " + failedRow + " und Spalte " + failedCol + ".");
+                    }
+                }
+                if (conflict == false){
+                    for (int i = row; i <= row + shipLength - 1; i++) {
+                        player[i][col] = '#';
+                    } 
+                }
+            } while (conflict == true);
                         
-        } while (conflict = true);
+        } 
     }
 
     /**
