@@ -54,6 +54,27 @@ public class SchiffeVersenken {
     */
     private static int strikesOpponent = 0;
     
+    
+    /**
+    Konstante fuer Anzahl der Schlachtschiffe
+    */
+    public static final int BATTLESHIP = 1; // 5 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der Kreuzer
+    */
+    public static final int CRUISER = 2; // 4 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der Zerstoerer
+    */
+    public static final int DESTROYER = 3; // 3 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der U-Boote
+    */
+    public static final int SUBMARINE = 4; // 2 Kaestchen
+    
     /**
     Diese Methode fragt den Spieler nach den Koordinaten fuer seinen
     Angriff und traegt ein X für Treffer und O für keinen Treffer in
@@ -267,6 +288,10 @@ public class SchiffeVersenken {
         } while (counter == 0);
 
         return convertedInt;
+    }
+    
+    public static void placeBattleships() {
+    
     }
 
     /**
