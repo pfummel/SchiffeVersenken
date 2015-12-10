@@ -308,9 +308,38 @@ public class SchiffeVersenken {
             System.out.println("Du hast noch" + cruiserCount+ "Kreuzer!");
             System.out.println("Du hast noch" + destroyerCount + "Zerstoerer!");
             System.out.println("Du hast noch" + submarineCount + "U-Boote!");
-            System.out.print("Was moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
+            
+            do {
+                System.out.print("Was moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
+                input = checkInt();
+                
+                switch (input) {
+                    case 1: setBattleshipsInArray(5);
+                        counter = 0;
+                        break;
+                    case 2: setBattleshipsInArray(4);
+                        counter = 0;
+                        break;
+                    case 3: setBattleshipsInArray(3);
+                        counter = 0;
+                        break;
+                    case 4: setBattleshipsInArray(2);
+                        break;
+                    default: System.out.print("Bitte waehle aus den Optionen (1), (2), (3) oder (4) aus!");
+                        counter = 1;
+                        break;
+                }
+            } while (counter == 1);
             
         } while {!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0)};
+    }
+    
+    /**
+    Setzt das vom Spieler gewaehlte Schiff in das spielereigene Array und ueberprueft ob die Platzierung 
+    konfiktfrei (ueberstehende Schiffe, ueberschneidende Schiffe) ist.
+    */
+    public static void setBattleshipsInArray(int shipLength) {
+    
     }
 
     /**
