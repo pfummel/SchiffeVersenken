@@ -290,6 +290,9 @@ public class SchiffeVersenken {
         return convertedInt;
     }
     
+    /**
+    Laesst den Spieler die Schiffe selbst auf dem Spielfeld verteilen.
+    */    
     public static void placeBattleships() {
     
     }
