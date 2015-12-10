@@ -294,7 +294,22 @@ public class SchiffeVersenken {
     Laesst den Spieler die Schiffe selbst auf dem Spielfeld verteilen.
     */    
     public static void placeBattleships() {
-    
+        
+        int counter = 1;
+        
+        int battleshipCount, cruiserCount, destroyerCount, submarineCount;
+        battleshipCount = BATTLESHIP;
+        cruiserCount = CRUISER;
+        destroyerCount = DESTROYER;
+        submarineCount = SUBMARINE;
+        
+        do {
+            System.out.println("Du hast noch" + battleshipCount + "Schlachtschiff!");
+            System.out.println("Du hast noch" + cruiserCount+ "Kreuzer!");
+            System.out.println("Du hast noch" + destroyerCount + "Zerstoerer!");
+            System.out.println("Du hast noch" + submarineCount + "U-Boote!");
+            
+        } while {counter == 1};
     }
 
     /**
