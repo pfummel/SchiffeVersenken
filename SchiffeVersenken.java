@@ -296,6 +296,7 @@ public class SchiffeVersenken {
     public static void placeBattleships() {
         
         int counter = 1;
+        int input;
         
         int battleshipCount, cruiserCount, destroyerCount, submarineCount;
         battleshipCount = BATTLESHIP;
@@ -331,7 +332,7 @@ public class SchiffeVersenken {
                 }
             } while (counter == 1);
             
-        } while {!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0)};
+        } while (!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0));
     }
     
     /**
