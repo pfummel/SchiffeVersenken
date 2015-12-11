@@ -215,7 +215,7 @@ public class SchiffeVersenken {
     */
     public static void print(char[][] grid) {
     
-        char[] rowAlpha = {'A','B','C','D','E','F','G','H','I','J'};
+        char[] rowAlpha = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         
         System.out.println("\n " + "0123456789");
         for (int i = 0; i < grid.length; i++) {
@@ -226,11 +226,11 @@ public class SchiffeVersenken {
             System.out.print("\n");
         }
     }
-	/**
-	Die Methode ueberprueft ob eine Eingabe ein 
-	Integer ist und verlangt sonst die Eingabe eines Integers.
-	@return Gibt die Eingabe als Integer zurück.
-	*/
+    /**
+    Die Methode ueberprueft ob eine Eingabe ein 
+    Integer ist und verlangt sonst die Eingabe eines Integers.
+    @return Gibt die Eingabe als Integer zurück.
+    */
     public static int checkInt() {
     
         Scanner check = new Scanner(System.in);
@@ -269,17 +269,17 @@ public class SchiffeVersenken {
                 if (inputAsInt >= 65 && inputAsInt <= 74) {         //Grossbuchstaben A bis J
                     convertedInt = inputAsInt - 65;
                     counter = 1;
-                }
-                else if (inputAsInt >=97 && inputAsInt <=106) {      //Kleinbuchstaben a bis j
-                    convertedInt = inputAsInt -97;
+                    }
+                else if (inputAsInt >= 97 && inputAsInt <= 106) {      //Kleinbuchstaben a bis j
+                    convertedInt = inputAsInt - 97;
                     counter = 1;
-                }
+                    }
                 else {
                     counter = 0;
                     scan.nextLine();
                     System.out.print("Ungueltige Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
                 }
-            }
+                }
             else {
                 counter = 0;
                 scan.nextLine();
@@ -307,43 +307,48 @@ public class SchiffeVersenken {
         
         do {
             System.out.println("\nDu hast noch " + battleshipCount + " Schlachtschiff!");
-            System.out.println("Du hast noch " + cruiserCount+ " Kreuzer!");
+            System.out.println("Du hast noch " + cruiserCount + " Kreuzer!");
             System.out.println("Du hast noch " + destroyerCount + " Zerstoerer!");
             System.out.println("Du hast noch " + submarineCount + " U-Boote!");
             
             do {
-                System.out.print("\nWas moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
+                System.out.print("\nWas moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n
+                        (3) Zerstoerer setzen\n(4) U-Boote setzen\n");
                 input = checkInt();
                 
                 switch (input) {
-                    case 1: if (battleshipCount == 0) {
-                                System.out.print("Es gibt keine Schlachtschiffe mehr!\n");
-                                break;
-                            }
+                    case 1: 
+                        if (battleshipCount == 0) {
+                            System.out.print("Es gibt keine Schlachtschiffe mehr!\n");
+                            break;
+                        }
                         setBattleshipsInArray(5);
                         battleshipCount--;
                         counter = 0;
                         break;
-                    case 2: if (cruiserCount == 0) {
-                                System.out.print("Es gibt keine Kreuzer mehr!\n");
-                                break;
-                            }
+                    case 2: 
+                        if (cruiserCount == 0) {
+                            System.out.print("Es gibt keine Kreuzer mehr!\n");
+                            break;
+                        }
                         setBattleshipsInArray(4);
 						cruiserCount--;
                         counter = 0;
                         break;
-                    case 3: if (destroyerCount == 0) {
-                                System.out.print("Es gibt keine Zerstoerer mehr!\n");
-                                break;
-                            }
+                    case 3: 
+                        if (destroyerCount == 0) {
+                            System.out.print("Es gibt keine Zerstoerer mehr!\n");
+                            break;
+                        }
                         setBattleshipsInArray(3);
 						destroyerCount--;
                         counter = 0;
                         break;
-                    case 4: if (destroyerCount == 0) {
-                                System.out.print("Es gibt keine U-Boote mehr!\n");
-                                break;
-                            }
+                    case 4: 
+                        if (destroyerCount == 0) {
+                            System.out.print("Es gibt keine U-Boote mehr!\n");
+                            break;
+                        }
 						setBattleshipsInArray(2);
 						submarineCount--;
 						counter = 0;
