@@ -361,7 +361,7 @@ public class SchiffeVersenken {
     
     /**
     Setzt das vom Spieler gewaehlte Schiff in das spielereigene Array und ueberprueft ob die Platzierung 
-    konfiktfrei (ueberstehende Schiffe, ueberschneidende Schiffe) ist.
+    konfliktfrei (ueberstehende Schiffe, ueberschneidende Schiffe) ist.
     @param shipLength Die Laenge des zu setzenden Schiffes.
     */
     public static void setBattleshipsInArray(int shipLength) {
@@ -421,7 +421,7 @@ public class SchiffeVersenken {
                 }
             } while (conflict == true); 
             
-        // Fragt nach Koordinaten fuer vertical zu setzende Schiffe 
+        // Fragt nach Koordinaten fuer vertikal zu setzende Schiffe 
         // und ueberpreuft ob das Schiff auf das Spielfeld passt.
         } else {
             do {
