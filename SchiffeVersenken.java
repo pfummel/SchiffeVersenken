@@ -269,18 +269,15 @@ public class SchiffeVersenken {
                 if (inputAsInt >= 65 && inputAsInt <= 74) {         //Grossbuchstaben A bis J
                     convertedInt = inputAsInt - 65;
                     counter = 1;
-                    }
-                else if (inputAsInt >= 97 && inputAsInt <= 106) {      //Kleinbuchstaben a bis j
+                } else if (inputAsInt >= 97 && inputAsInt <= 106) {      //Kleinbuchstaben a bis j
                     convertedInt = inputAsInt - 97;
                     counter = 1;
-                    }
-                else {
+                } else {
                     counter = 0;
                     scan.nextLine();
                     System.out.print("Ungueltige Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
                 }
-                }
-            else {
+            } else {
                 counter = 0;
                 scan.nextLine();
                 System.out.println("Unguelitge Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
@@ -312,8 +309,8 @@ public class SchiffeVersenken {
             System.out.println("Du hast noch " + submarineCount + " U-Boote!");
             
             do {
-                System.out.print("\nWas moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n
-                        (3) Zerstoerer setzen\n(4) U-Boote setzen\n");
+                System.out.print("\nWas moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n"
+                         + "(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
                 input = checkInt();
                 
                 switch (input) {
@@ -332,7 +329,7 @@ public class SchiffeVersenken {
                             break;
                         }
                         setBattleshipsInArray(4);
-						cruiserCount--;
+                        cruiserCount--;
                         counter = 0;
                         break;
                     case 3: 
@@ -341,7 +338,7 @@ public class SchiffeVersenken {
                             break;
                         }
                         setBattleshipsInArray(3);
-						destroyerCount--;
+                        destroyerCount--;
                         counter = 0;
                         break;
                     case 4: 
@@ -349,9 +346,9 @@ public class SchiffeVersenken {
                             System.out.print("Es gibt keine U-Boote mehr!\n");
                             break;
                         }
-						setBattleshipsInArray(2);
-						submarineCount--;
-						counter = 0;
+                        setBattleshipsInArray(2);
+                        submarineCount--;
+                        counter = 0;
                         break;
                     default: System.out.print("Bitte waehle aus den Optionen (1), (2), (3) oder (4) aus!");
                         counter = 1;
@@ -370,8 +367,8 @@ public class SchiffeVersenken {
     public static void setBattleshipsInArray(int shipLength) {
         
         boolean conflict;
-		int input, row, col, failedRow, failedCol;
-		char failedRowAlpha;
+        int input, row, col, failedRow, failedCol;
+        char failedRowAlpha;
     
         System.out.print("Die Schiffe werden horizontal oder vertikal von der gewaehlten Koordinate aus platziert!\n");
         do {
@@ -379,11 +376,12 @@ public class SchiffeVersenken {
             input = checkInt();
         } while (!(input >= 1 && input <= 2));
         
-        // Fragt nach Koordinaten fuer horizontal zu setzende Schiffe und ueberpreuft ob das Schiff auf das Spielfeld passt.
-        if (input == 1){
-            do{
+        // Fragt nach Koordinaten fuer horizontal zu setzende Schiffe 
+        // und ueberpreuft ob das Schiff auf das Spielfeld passt.
+        if (input == 1) {
+            do {
                 System.out.print("Wo moechtest du das Schiff platzieren?\n");
-				conflict = false;
+                conflict = false;
                 
                 // Zeile
                 System.out.print("Zeile: ");
@@ -411,23 +409,24 @@ public class SchiffeVersenken {
                         conflict = true;
                         failedRow = row;
                         failedCol = i;
-						failedRowAlpha = (char) (failedRow + 65);
-                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha + " und Spalte " + failedCol + ".");
+                        failedRowAlpha = (char) (failedRow + 65);
+                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha 
+                                + " und Spalte " + failedCol + ".");
                     }
                 }
-                if (conflict == false){
+                if (conflict == false) {
                     for (int i = col; i <= col + shipLength - 1; i++) {
                         player[row][i] = '#';
                     } 
                 }
             } while (conflict == true); 
-        }
-        
-		// Fragt nach Koordinaten fuer vertical zu setzende Schiffe und ueberpreuft ob das Schiff auf das Spielfeld passt.
-        else {
+            
+        // Fragt nach Koordinaten fuer vertical zu setzende Schiffe 
+        // und ueberpreuft ob das Schiff auf das Spielfeld passt.
+        } else {
             do {
                 System.out.print("Wo moechtest du das Schiff platzieren?\n");
-				conflict = false;
+                conflict = false;
                 
                 // Zeile
                 System.out.print("Zeile: ");
@@ -448,7 +447,7 @@ public class SchiffeVersenken {
                         System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                     }
                 } while (!(row >= 0 && col <= 9));
-				
+                
                  // Ueberpruefung auf bereits gesetzte Schiffe.
                 for (int i = row; i <= row + shipLength - 1; i++) {
 
@@ -456,11 +455,12 @@ public class SchiffeVersenken {
                         conflict = true;
                         failedRow = i;
                         failedCol = col;
-						failedRowAlpha = (char) (failedRow + 65);
-                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha + " und Spalte " + failedCol + ".");
+                        failedRowAlpha = (char) (failedRow + 65);
+                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha 
+                                + " und Spalte " + failedCol + ".");
                     }
                 }
-                if (conflict == false){
+                if (conflict == false) {
                     for (int i = row; i <= row + shipLength - 1; i++) {
                         player[i][col] = '#';
                     } 
@@ -468,7 +468,7 @@ public class SchiffeVersenken {
             } while (conflict == true);
                         
         }
-		print(player);
+        print(player);
     }
 
     /**
