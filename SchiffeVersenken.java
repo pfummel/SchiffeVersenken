@@ -342,7 +342,7 @@ public class SchiffeVersenken {
                         counter = 0;
                         break;
                     case 4: 
-                        if (destroyerCount == 0) {
+                        if (submarineCount == 0) {
                             System.out.print("Es gibt keine U-Boote mehr!\n");
                             break;
                         }
