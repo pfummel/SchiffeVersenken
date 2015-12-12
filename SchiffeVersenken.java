@@ -301,6 +301,8 @@ public class SchiffeVersenken {
         cruiserCount = CRUISER;
         destroyerCount = DESTROYER;
         submarineCount = SUBMARINE;
+
+        print(player);
         
         do {
             System.out.println("\nDu hast noch " + battleshipCount + " Schlachtschiff!");
