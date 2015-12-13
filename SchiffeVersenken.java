@@ -301,6 +301,8 @@ public class SchiffeVersenken {
         cruiserCount = CRUISER;
         destroyerCount = DESTROYER;
         submarineCount = SUBMARINE;
+
+        print(player);
         
         do {
             System.out.println("\nDu hast noch " + battleshipCount + " Schlachtschiff!");
@@ -342,7 +344,7 @@ public class SchiffeVersenken {
                         counter = 0;
                         break;
                     case 4: 
-                        if (destroyerCount == 0) {
+                        if (submarineCount == 0) {
                             System.out.print("Es gibt keine U-Boote mehr!\n");
                             break;
                         }
