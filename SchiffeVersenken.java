@@ -14,16 +14,16 @@ public class SchiffeVersenken {
     Array zum darstellen des spielereigenen Spielfeldes.
     */
     private static char[][] player = {
-        {'.', '#', '#', '#', '#', '.', '.', '.', '.', '.'}, //row 0
-        {'.', '.', '.', '.', '.', '#', '#', '#', '#', '.'}, //row 1
-        {'.', '.', '.', '#', '.', '.', '.', '.', '#', '.'}, //row 2
-        {'.', '.', '.', '#', '.', '.', '.', '.', '#', '.'}, //row 3
-        {'#', '.', '.', '#', '.', '.', '.', '.', '#', '.'}, //row 4
-        {'#', '.', '.', '.', '.', '.', '.', '.', '#', '#'}, //row 5
-        {'.', '.', '#', '#', '#', '#', '.', '.', '.', '#'}, //row 6
-        {'.', '.', '.', '.', '.', '.', '#', '.', '.', '#'}, //row 7
-        {'.', '.', '.', '.', '.', '.', '#', '.', '.', '.'}, //row 8
-        {'.', '#', '#', '.', '.', '.', '.', '#', '#', '.'} //row 9
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 0
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 1
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 2
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 3
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 4
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 5
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 6
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 7
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}, //row 8
+        {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'} //row 9
         };
     
     /**
@@ -53,6 +53,27 @@ public class SchiffeVersenken {
     Verlieren des Spieles markiert.
     */
     private static int strikesOpponent = 0;
+    
+    
+    /**
+    Konstante fuer Anzahl der Schlachtschiffe
+    */
+    public static final int BATTLESHIP = 1; // 5 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der Kreuzer
+    */
+    public static final int CRUISER = 2; // 4 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der Zerstoerer
+    */
+    public static final int DESTROYER = 3; // 3 Kaestchen
+    
+    /**
+    Konstante fuer Anzahl der U-Boote
+    */
+    public static final int SUBMARINE = 4; // 2 Kaestchen
     
     /**
     Diese Methode fragt den Spieler nach den Koordinaten fuer seinen
@@ -194,7 +215,7 @@ public class SchiffeVersenken {
     */
     public static void print(char[][] grid) {
     
-        char[] rowAlpha = {'A','B','C','D','E','F','G','H','I','J'};
+        char[] rowAlpha = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         
         System.out.println("\n " + "0123456789");
         for (int i = 0; i < grid.length; i++) {
@@ -205,11 +226,11 @@ public class SchiffeVersenken {
             System.out.print("\n");
         }
     }
-        /**
-        Die Methode ueberprueft ob eine Eingabe ein 
-        Integer ist und verlangt sonst die Eingabe eines Integers.
-        @return Gibt die Eingabe als Integer zurück.
-        */
+    /**
+    Die Methode ueberprueft ob eine Eingabe ein 
+    Integer ist und verlangt sonst die Eingabe eines Integers.
+    @return Gibt die Eingabe als Integer zurück.
+    */
     public static int checkInt() {
     
         Scanner check = new Scanner(System.in);
@@ -237,7 +258,7 @@ public class SchiffeVersenken {
         Scanner scan = new Scanner(System.in);
         String inputAsString;
         char inputAsChar;
-        int inputAsInt, convertedInt = 400, counter = 0;
+        int inputAsInt, convertedInt = 0, counter = 0;
 
         do {
             inputAsString = scan.next();
@@ -248,18 +269,15 @@ public class SchiffeVersenken {
                 if (inputAsInt >= 65 && inputAsInt <= 74) {         //Grossbuchstaben A bis J
                     convertedInt = inputAsInt - 65;
                     counter = 1;
-                }
-                else if (inputAsInt >=97 && inputAsInt <=106) {      //Kleinbuchstaben a bis j
-                    convertedInt = inputAsInt -97;
+                } else if (inputAsInt >= 97 && inputAsInt <= 106) {      //Kleinbuchstaben a bis j
+                    convertedInt = inputAsInt - 97;
                     counter = 1;
-                }
-                else {
+                } else {
                     counter = 0;
                     scan.nextLine();
                     System.out.print("Ungueltige Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
                 }
-            }
-            else {
+            } else {
                 counter = 0;
                 scan.nextLine();
                 System.out.println("Unguelitge Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
@@ -267,6 +285,192 @@ public class SchiffeVersenken {
         } while (counter == 0);
 
         return convertedInt;
+    }
+    
+    /**
+    Laesst den Spieler die Schiffe selbst auf dem Spielfeld verteilen.
+    */    
+    public static void placeBattleships() {
+        
+        int counter = 1;
+        int input;
+        
+        int battleshipCount, cruiserCount, destroyerCount, submarineCount;
+
+        battleshipCount = BATTLESHIP;
+        cruiserCount = CRUISER;
+        destroyerCount = DESTROYER;
+        submarineCount = SUBMARINE;
+
+        print(player);
+        
+        do {
+            System.out.println("\nDu hast noch " + battleshipCount + " Schlachtschiff!");
+            System.out.println("Du hast noch " + cruiserCount + " Kreuzer!");
+            System.out.println("Du hast noch " + destroyerCount + " Zerstoerer!");
+            System.out.println("Du hast noch " + submarineCount + " U-Boote!");
+            
+            do {
+                System.out.print("\nWas moechtest du tun?\n(1) Schlachtschiff setzen\n(2) Kreuzer setzen\n"
+                         + "(3) Zerstoerer setzen\n(4) U-Boote setzen\n");
+                input = checkInt();
+                
+                switch (input) {
+                    case 1: 
+                        if (battleshipCount == 0) {
+                            System.out.print("Es gibt keine Schlachtschiffe mehr!\n");
+                            break;
+                        }
+                        setBattleshipsInArray(5);
+                        battleshipCount--;
+                        counter = 0;
+                        break;
+                    case 2: 
+                        if (cruiserCount == 0) {
+                            System.out.print("Es gibt keine Kreuzer mehr!\n");
+                            break;
+                        }
+                        setBattleshipsInArray(4);
+                        cruiserCount--;
+                        counter = 0;
+                        break;
+                    case 3: 
+                        if (destroyerCount == 0) {
+                            System.out.print("Es gibt keine Zerstoerer mehr!\n");
+                            break;
+                        }
+                        setBattleshipsInArray(3);
+                        destroyerCount--;
+                        counter = 0;
+                        break;
+                    case 4: 
+                        if (submarineCount == 0) {
+                            System.out.print("Es gibt keine U-Boote mehr!\n");
+                            break;
+                        }
+                        setBattleshipsInArray(2);
+                        submarineCount--;
+                        counter = 0;
+                        break;
+                    default: System.out.print("Bitte waehle aus den Optionen (1), (2), (3) oder (4) aus!");
+                        counter = 1;
+                        break;
+                }
+            } while (counter == 1);
+        
+        } while (!(battleshipCount == 0 && cruiserCount == 0 && destroyerCount == 0 && submarineCount == 0));
+    }
+    
+    /**
+    Setzt das vom Spieler gewaehlte Schiff in das spielereigene Array und ueberprueft ob die Platzierung 
+    konfliktfrei (ueberstehende Schiffe, ueberschneidende Schiffe) ist.
+    @param shipLength Die Laenge des zu setzenden Schiffes.
+    */
+    public static void setBattleshipsInArray(int shipLength) {
+        
+        boolean conflict;
+        int input, row, col, failedRow, failedCol;
+        char failedRowAlpha;
+    
+        System.out.print("Die Schiffe werden horizontal oder vertikal von der gewaehlten Koordinate aus platziert!\n");
+        do {
+            System.out.print("Soll das Schiff (1) horizontal oder (2) vertikal platziert werden?\n");
+            input = checkInt();
+        } while (!(input >= 1 && input <= 2));
+        
+        // Fragt nach Koordinaten fuer horizontal zu setzende Schiffe 
+        // und ueberpreuft ob das Schiff auf das Spielfeld passt.
+        if (input == 1) {
+            do {
+                System.out.print("Wo moechtest du das Schiff platzieren?\n");
+                conflict = false;
+                
+                // Zeile
+                System.out.print("Zeile: ");
+                
+                do {
+                    row = convertChar();
+                    if (!(row >= 0 && row <= 9 )) {
+                        System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
+                    }
+                } while (!(row >= 0 && row <= 9));     
+                
+                // Spalte
+                System.out.print("Spalte: ");
+                
+                do {
+                    col = checkInt();
+                    if (!(row >= 0 && col <= 10 - shipLength)) {
+                        System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
+                    }
+                } while (!(row >= 0 && col <= 10 - shipLength));
+                
+                // Ueberpruefung auf bereits gesetzte Schiffe.
+                for (int i = col; i <= col + shipLength - 1; i++) {
+                    if (player[row][i] == '#') {
+                        conflict = true;
+                        failedRow = row;
+                        failedCol = i;
+                        failedRowAlpha = (char) (failedRow + 65);
+                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha 
+                                + " und Spalte " + failedCol + ".");
+                    }
+                }
+                if (conflict == false) {
+                    for (int i = col; i <= col + shipLength - 1; i++) {
+                        player[row][i] = '#';
+                    } 
+                }
+            } while (conflict == true); 
+            
+        // Fragt nach Koordinaten fuer vertikal zu setzende Schiffe 
+        // und ueberpreuft ob das Schiff auf das Spielfeld passt.
+        } else {
+            do {
+                System.out.print("Wo moechtest du das Schiff platzieren?\n");
+                conflict = false;
+                
+                // Zeile
+                System.out.print("Zeile: ");
+                
+                do {
+                    row = convertChar();
+                    if (!(row >= 0 && row <= 10 - shipLength)) {
+                        System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
+                    }
+                } while (!(row >= 0 && row <= 10 - shipLength));     
+                
+                // Spalte
+                System.out.print("Spalte: ");
+                
+                do {
+                    col = checkInt();
+                    if (!(row >= 0 && col <= 9)) {
+                        System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
+                    }
+                } while (!(row >= 0 && col <= 9));
+                
+                 // Ueberpruefung auf bereits gesetzte Schiffe.
+                for (int i = row; i <= row + shipLength - 1; i++) {
+
+                    if (player[i][col] == '#') {
+                        conflict = true;
+                        failedRow = i;
+                        failedCol = col;
+                        failedRowAlpha = (char) (failedRow + 65);
+                        System.out.println("Es liegt bereits ein Schiff in Zeile " + failedRowAlpha 
+                                + " und Spalte " + failedCol + ".");
+                    }
+                }
+                if (conflict == false) {
+                    for (int i = row; i <= row + shipLength - 1; i++) {
+                        player[i][col] = '#';
+                    } 
+                }
+            } while (conflict == true);
+                        
+        }
+        print(player);
     }
 
     /**
@@ -281,13 +485,15 @@ public class SchiffeVersenken {
         int input;
         int counter = 0;
         
+        placeBattleships();
+
         print(player);
         print(opponent);
         
         while (true) {
 
             do {
-                System.out.print("\nWas moechtest du tun?\n(1) Angreifen\n(2) Verteidigen\n(3) Print\n(4) Exit\n");
+                System.out.print("\nWas moechtest du tun?\n\n(1) Angreifen\n(2) Verteidigen\n(3) Print\n(4) Exit\n");
                 input = checkInt();
                 
                 switch (input) {
