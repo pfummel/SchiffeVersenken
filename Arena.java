@@ -1,5 +1,5 @@
 /**
-Die Klasse Arena vereint die gemeinsamen Aspekteder zwei Spielfelder und wird sowohl von der Klasse Player, als auch von Enemy beerbt.
+Die Klasse Arena vereint die gemeinsamen Aspekte der zwei Spielfelder und wird sowohl von der Klasse Player, als auch von Enemy beerbt.
 */
 public class Arena{
 
@@ -17,7 +17,7 @@ public class Arena{
         for(int i = 0; i<10; i++){
             for(int j = 0; j<10; j++){
             
-                this.grid[i][j] = '0';
+                this.grid[i][j] = '.';
             }
         }
     }
