@@ -187,7 +187,43 @@ public class Game{
     /**
     Methode, die dazu dient einen gegnerischen Schuss zu erhalten.
     */
-    private void defend(){}
+    private void defend(){
+        
+        int row = 0, col = 0;
+        boolean counter;
+        
+        /*
+        Eingabe des gegnerischen Angriffs als Zeile und Spalte, hochzaehlen
+        der Variable strikesOpponent, Niederlage bei strikesOpponent = 30, 
+        abfangen ungueltiger Eingaben
+        */
+        do {
+            System.out.print("\nWohin wurde geschossen?");
+            
+            // Zeile
+            System.out.print("Zeile: ");
+            
+            do {
+                row = convertChar();
+                if (!(row >= 0 && row <= 9)) {
+                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                }
+            } while (!(row >= 0 && row <= 9));
+            
+            //Spalte
+            System.out.print("Spalte: ");
+            
+            do {
+                col = checkInt();
+                if (!(row >= 0 && col <= 9)) {
+                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                }
+            } while (!(row >= 0 && col <= 9));
+            
+            counter = player.takeHit(row,col);
+            
+        } while (counter);
+    }
 
     /**
     Methode, die die Schiffe im Feld des Spielers plaziert.
