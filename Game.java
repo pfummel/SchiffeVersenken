@@ -51,8 +51,8 @@ public class Game{
         
         placeBattleships();
 
-        print(player);
-        print(opponent);
+        player.toString();
+        enemy.toString();
         
         while (true) {
 
@@ -84,7 +84,15 @@ public class Game{
     Die Methode überprüft mithilfe der Methode numberOFHits() der Klasse Enemy,
     ob alle gegnerischenSchiffe versenkt wurden.
     */
-    private void victory(){}
+    private void victory(){
+        int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 4);
+        
+        if (hitsToWin == numberOfHits()){
+            System.out.println("Glueckwunsch du hast das Spiel gewonnen");
+            System.exit(0);
+        }
+        
+    }
 
     /**
     Die Methode überprueft, mithilfe der Methode isAlive() der Klasse Player,
@@ -97,7 +105,62 @@ public class Game{
     Methode, die dazu dient den Gegner anzgreifen und Markierungen
     im Feld des Gegners vorzunehmen.
     */
-    private void attack(){}
+    private void attack(){
+        //Scanner scan = new Scanner(System.in);
+        int counter = 0;
+        int input, row, col;
+        boolean hit;
+
+        scan.nextLine();
+        
+        /* 
+        Abfrage der Zeile und Spalte des Ziels, abfangen ungueltiger Eingaben
+        (Int von 0-9)
+        */
+        do {
+            System.out.print("\nWohin moechtest du schiessen?\n");
+            
+            // Zeile
+            System.out.print("Zeile: ");
+            
+            do {
+                row = convertChar();
+                if (!(row >= 0 && row <= 9)) {
+                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                }
+            } while (!(row >= 0 && row <= 9));     
+            
+            // Spalte
+            System.out.print("Spalte: ");
+            
+            do {
+                col = checkInt();
+                if (!(row >= 0 && col <= 9)) {
+                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                }
+            } while (!(row >= 0 && col <= 9));
+
+            do {
+                System.out.println("\nWar der Schuss ein Treffer?\n(1) Ja\n(2) Nein");
+                input = checkInt();
+
+                switch (input) {
+                    case 1: hit = true;
+                            counter = 0;
+                            enemy.set(row, col, hit);
+                            enemy.toString();
+                            break;
+                    case 2: hit = false;
+                            counter = 0;
+                            enemy.set(row, col, hit);
+                            enemy.toString();
+                            break;
+                    default: System.out.println("Keine gueltige Eingabe! Bitte wahle aus (1) oder (2) aus!");
+                            counter = 1;
+                }
+            } while (counter == 1);            
+        } while (hit == true);
+    }
 
     /**
     Methode, die dazu dient einen gegnerischen Schuss zu erhalten.
