@@ -67,8 +67,8 @@ public class Game{
                     case 2: defend();
                         counter = 0;
                         break;
-                    case 3: print(player);
-                        print(opponent);
+                    case 3: player.toString();
+                        enemy.toString();
                         counter = 0;
                         break;
                     case 4: System.exit(0);
