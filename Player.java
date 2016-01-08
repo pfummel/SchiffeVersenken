@@ -32,12 +32,12 @@ public class Player extends Arena{
         */        
         if ((this.grid[row][col] == '#') == true) {
             this.grid[row][col] = 'X';
-            System.out.println(this.toString());
+            System.out.print(this.toString());
             System.out.println("\nDu wurdest getroffen!");
             hit = true;
         } else {
             this.grid[row][col] = 'O';
-            print(player);
+            System.out.print(this.toString());
             System.out.println("\nDu wurdest nicht getroffen!");
             hit = false;
         }
@@ -59,7 +59,7 @@ public class Player extends Arena{
             System.out.print("Die Schiffe werden horizontal oder vertikal von der gewaehlten Koordinate aus platziert!\n");
             do {
                 System.out.print("Soll das Schiff (1) horizontal oder (2) vertikal platziert werden?\n");
-                input = checkInt();
+                input = game.checkInt();
             } while (!(input >= 1 && input <= 2));
             
             // Fragt nach Koordinaten fuer horizontal zu setzende Schiffe 
@@ -73,7 +73,7 @@ public class Player extends Arena{
                     System.out.print("Zeile: ");
                     
                     do {
-                        row = convertChar();
+                        row = game.convertChar();
                         if (!(row >= 0 && row <= 9 )) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -83,7 +83,7 @@ public class Player extends Arena{
                     System.out.print("Spalte: ");
                     
                     do {
-                        col = checkInt();
+                        col = game.checkInt();
                         if (!(row >= 0 && col <= 10 - shipLength)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -91,7 +91,7 @@ public class Player extends Arena{
                     
                     // Ueberpruefung auf bereits gesetzte Schiffe.
                     for (int i = col; i <= col + shipLength - 1; i++) {
-                        if (player[row][i] == '#') {
+                        if (this.grid[row][i] == '#') {
                             conflict = true;
                             failedRow = row;
                             failedCol = i;
@@ -102,7 +102,7 @@ public class Player extends Arena{
                     }
                     if (conflict == false) {
                         for (int i = col; i <= col + shipLength - 1; i++) {
-                            player[row][i] = '#';
+                            this.grid[row][i] = '#';
                         } 
                     }
                 } while (conflict == true); 
@@ -118,7 +118,7 @@ public class Player extends Arena{
                     System.out.print("Zeile: ");
                     
                     do {
-                        row = convertChar();
+                        row = game.convertChar();
                         if (!(row >= 0 && row <= 10 - shipLength)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -128,7 +128,7 @@ public class Player extends Arena{
                     System.out.print("Spalte: ");
                     
                     do {
-                        col = checkInt();
+                        col = game.checkInt();
                         if (!(row >= 0 && col <= 9)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -137,7 +137,7 @@ public class Player extends Arena{
                      // Ueberpruefung auf bereits gesetzte Schiffe.
                     for (int i = row; i <= row + shipLength - 1; i++) {
 
-                        if (player[i][col] == '#') {
+                        if (this.grid[i][col] == '#') {
                             conflict = true;
                             failedRow = i;
                             failedCol = col;
@@ -148,13 +148,13 @@ public class Player extends Arena{
                     }
                     if (conflict == false) {
                         for (int i = row; i <= row + shipLength - 1; i++) {
-                            player[i][col] = '#';
+                            this.grid[i][col] = '#';
                         } 
                     }
                 } while (conflict == true);
                             
             }
-            print(player);
+            System.out.print(this.toString());
         }
 
 }

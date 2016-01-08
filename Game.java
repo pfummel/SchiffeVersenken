@@ -304,7 +304,7 @@ public class Game{
     Integer ist und verlangt sonst die Eingabe eines Integers.
     @return Gibt die Eingabe als Integer zurück.
     */
-    public static int checkInt() {
+    public int checkInt() {
     
         //Scanner check = new Scanner(System.in);
         scan.nextLine();
@@ -327,7 +327,7 @@ public class Game{
     die Buchstaben in Integer in der Form a=0, A=0 -> j=9, J=9.
     @return gibt die char Eingabe als konvertierten Integer zurück.
     */
-    public static int convertChar() {
+    public int convertChar() {
 
         //Scanner scan = new Scanner(System.in);
         scan.nextLine();
