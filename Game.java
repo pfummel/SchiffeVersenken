@@ -18,7 +18,7 @@ public class Game{
     /**
     Scanner fuer Nutzereingaben.
     */
-    private Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
 
 
     /**
@@ -137,7 +137,7 @@ public class Game{
         //Scanner scan = new Scanner(System.in);
         int counter = 0;
         int input, row, col;
-        boolean hit;
+        boolean hit = false;
 
         scan.nextLine();
         
@@ -313,7 +313,7 @@ public class Game{
     public static int checkInt() {
     
         //Scanner check = new Scanner(System.in);
-        scan.nextLine();
+        //scan.nextLine();
         int input;
         
         // Ueberprueft ob die Eingabe ein Integer ist            
@@ -322,7 +322,7 @@ public class Game{
             System.out.print("Ungueltige Eingabe! Nochmal: ");
         }
         input = scan.nextInt();
-        
+        scan.nextLine();
         //Rueckgabe des Eingabewertes als Integer
         return input;
     }
@@ -336,7 +336,7 @@ public class Game{
     public static int convertChar() {
 
         //Scanner scan = new Scanner(System.in);
-        scan.nextLine();
+        //scan.nextLine();
         String inputAsString;
         char inputAsChar;
         int inputAsInt, convertedInt = 0, counter = 0;
@@ -364,7 +364,7 @@ public class Game{
                 System.out.println("Unguelitge Eingabe! Bitte eine Zeile zwischen A und J waehlen. \nZeile: ");
             }
         } while (counter == 0);
-
+        scan.nextLine();
         return convertedInt;
     }    
     

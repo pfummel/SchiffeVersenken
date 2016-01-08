@@ -118,7 +118,7 @@ public class Player extends Arena{
                     System.out.print("Zeile: ");
                     
                     do {
-                        row = game.convertChar();
+                        row = Game.convertChar();
                         if (!(row >= 0 && row <= 10 - shipLength)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -128,7 +128,7 @@ public class Player extends Arena{
                     System.out.print("Spalte: ");
                     
                     do {
-                        col = game.checkInt();
+                        col = Game.checkInt();
                         if (!(row >= 0 && col <= 9)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
