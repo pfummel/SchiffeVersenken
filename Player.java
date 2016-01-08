@@ -10,12 +10,12 @@ public class Player extends Arena{
         
         for(int i = 0; i<10; i++){
             for(int j = 0; j<10; j++){
-                if (this.grid[i][j] == #) {
+                if (this.grid[i][j] == '#') {
                     shipCount++;
                 }
             }
         }
-        if (shipCount == 0) {
+        if(shipCount == 0) {
             isAlive = false;
         }
         
