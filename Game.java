@@ -109,8 +109,8 @@ public class Game{
     private void victory(){
         int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
         
-        if (hitsToWin == enemy.numberOfHits()){
-            System.out.println("Glueckwunsch du hast das Spiel gewonnen");
+        if (hitsToWin == enemy.numberOfHits()){                     //Auswahl der Schiffe des Gegners muss gleich sein!
+            System.out.println("Glueckwunsch du hast das Spiel gewonnen!");
             System.exit(0);
         }
         
@@ -175,6 +175,7 @@ public class Game{
                             counter = 0;
                             enemy.set(row, col, hit);
                             System.out.print(enemy.toString());
+                            victory();
                             break;
                     case 2: hit = false;
                             counter = 0;
@@ -202,7 +203,7 @@ public class Game{
         abfangen ungueltiger Eingaben
         */
         do {
-            System.out.print("\nWohin wurde geschossen?");
+            System.out.println("\nWohin wurde geschossen?");
             
             // Zeile
             System.out.print("Zeile: ");
@@ -210,7 +211,7 @@ public class Game{
             do {
                 row = convertChar();
                 if (!(row >= 0 && row <= 9)) {
-                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                    System.out.println("Ungueltige Eingabe! \nNochmal: ");
                 }
             } while (!(row >= 0 && row <= 9));
             
@@ -220,11 +221,12 @@ public class Game{
             do {
                 col = checkInt();
                 if (!(row >= 0 && col <= 9)) {
-                    System.out.print("Ungueltige Eingabe! \nNochmal: ");
+                    System.out.println("Ungueltige Eingabe! \nNochmal: ");
                 }
             } while (!(row >= 0 && col <= 9));
             
             counter = player.takeHit(row,col);
+            defeat();
             
         } while (counter);
     }
