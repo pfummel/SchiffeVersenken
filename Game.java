@@ -8,12 +8,12 @@ public class Game{
     /**
     Objekt Player, das das Spielfeld des Spielers enhaelt.
     */
-    private Player player = new Player();
+    private Player player;
 
     /**
     Objekt Enemy, das das Spielfeld des Gegeners enthaelt.
     */
-    private Enemy enemy = new Enemy();
+    private Enemy enemy;
 
     /**
     Scanner fuer Nutzereingaben.
@@ -56,8 +56,8 @@ public class Game{
             Sytem.exit(0);
         }
         else {
-            Enemy enemy = new Enemy();
-            Player player = new Player();
+            enemy = new Enemy();
+            player = new Player();
         }
     }
 
