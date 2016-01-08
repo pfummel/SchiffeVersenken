@@ -109,7 +109,7 @@ public class Game{
     private void victory(){
         int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
         
-        if (hitsToWin == numberOfHits()){
+        if (hitsToWin == enemy.numberOfHits()){
             System.out.println("Glueckwunsch du hast das Spiel gewonnen");
             System.exit(0);
         }
@@ -119,9 +119,15 @@ public class Game{
     /**
     Die Methode überprueft, mithilfe der Methode isAlive() der Klasse Player,
     ob der Spieler verloren hat.
-    @return boolean-Wert, der true ist, wenn der Spieler besiegt wurde.
     */
-    //private boolean defeat(){}
+    private void defeat(){
+    
+        if (player.isAlive() == false) {
+            System.out.println("Schade du hast das Spiel verloren!");
+            System.exit(0);
+        }
+    
+    }
 
     /**
     Methode, die dazu dient den Gegner anzgreifen und Markierungen
