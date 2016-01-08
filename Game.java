@@ -45,7 +45,7 @@ public class Game{
     Konstruktor fuer Game, der die Objekte enemy und player erzeugt, falls die Spielkonfiguration gueltig ist.
     */
     public Game(){
-        int BoxesWithShips= (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
+        int BoxesWithShips = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
 
         if (BATTLESHIP < 0 || CRUISER < 0 || DESTROYER < 0 || SUBMARINE < 0){
             System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
@@ -71,10 +71,10 @@ public class Game{
         int input;
         int counter = 0;
         
-        placeBattleships();
+        setShips();
 
-        player.toString();
-        enemy.toString();
+        System.out.print(player.toString());
+        System.out.print(enemy.toString());
         
         while (true) {
 
@@ -89,8 +89,8 @@ public class Game{
                     case 2: defend();
                         counter = 0;
                         break;
-                    case 3: player.toString();
-                        enemy.toString();
+                    case 3: System.out.print(player.toString());
+                        System.out.print(enemy.toString());
                         counter = 0;
                         break;
                     case 4: System.exit(0);
@@ -170,12 +170,12 @@ public class Game{
                     case 1: hit = true;
                             counter = 0;
                             enemy.set(row, col, hit);
-                            enemy.toString();
+                            System.out.print(enemy.toString());
                             break;
                     case 2: hit = false;
                             counter = 0;
                             enemy.set(row, col, hit);
-                            enemy.toString();
+                            System.out.print(enemy.toString());
                             break;
                     default: System.out.println("Keine gueltige Eingabe! Bitte wahle aus (1) oder (2) aus!");
                             counter = 1;
@@ -204,7 +204,7 @@ public class Game{
         destroyerCount = DESTROYER;
         submarineCount = SUBMARINE;
 
-        print(player);
+        System.out.print(player.toString());
         
         do {
             System.out.println("\nDu hast noch " + battleshipCount + " Schlachtschiff!");
