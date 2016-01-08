@@ -16,11 +16,11 @@ public class Enemy extends Arena{
     */
     public void set(int row, int column, boolean hit){
         if (hit == true){
-            this.grid[row][col] = 'X';
+            this.grid[row][column] = 'X';
             this.numberOfHits += 1;
         }
         else {
-            this.grid[row][col] = 'O';
+            this.grid[row][column] = 'O';
         }
     }
 
