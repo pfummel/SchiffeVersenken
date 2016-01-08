@@ -138,8 +138,6 @@ public class Game{
         int counter = 0;
         int input, row, col;
         boolean hit = false;
-
-        scan.nextLine();
         
         /* 
         Abfrage der Zeile und Spalte des Ziels, abfangen ungueltiger Eingaben
