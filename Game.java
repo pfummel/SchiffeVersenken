@@ -41,8 +41,30 @@ public class Game{
     */
     public static final int SUBMARINE = 4; // 2 Kaestchen
 
-    public Game(){}
+    /**
+    Konstruktor fuer Game, der die Objekte enemy und player erzeugt, falls die Spielkonfiguration gueltig ist.
+    */
+    public Game(){
+        int BoxesWithShips= (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
 
+        if (BATTLESHIP < 0 || CRUISER < 0 || DESTROYER < 0 || SUBMARINE < 0){
+            System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
+            Sytem.exit(0);
+        }
+        else if (BoxesWithShips == 0){
+            System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
+            Sytem.exit(0);
+        }
+        else {
+            Enemy enemy = new Enemy();
+            Player player = new Player();
+        }
+    }
+
+    /**
+    Methode, die fuer den Programmablauf verantwortlich ist. Zuerst werden die Schiffe im Spielfeld gesetzt,
+    anschließend koennen die Methoden attack, defend etc aufgerufen werden.
+    */
     public void start(){
     
         //Scanner scan = new Scanner(System.in);
@@ -85,7 +107,7 @@ public class Game{
     ob alle gegnerischenSchiffe versenkt wurden.
     */
     private void victory(){
-        int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 4);
+        int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
         
         if (hitsToWin == numberOfHits()){
             System.out.println("Glueckwunsch du hast das Spiel gewonnen");
