@@ -49,11 +49,11 @@ public class Game{
 
         if (BATTLESHIP < 0 || CRUISER < 0 || DESTROYER < 0 || SUBMARINE < 0){
             System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
-            Sytem.exit(0);
+            System.exit(0);
         }
         else if (BoxesWithShips == 0){
             System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
-            Sytem.exit(0);
+            System.exit(0);
         }
         else {
             enemy = new Enemy();
@@ -265,7 +265,7 @@ public class Game{
                             System.out.print("Es gibt keine Schlachtschiffe mehr!\n");
                             break;
                         }
-                        setBattleshipsInArray(5);
+                        player.setBattleshipsInArray(5);
                         battleshipCount--;
                         counter = 0;
                         break;
@@ -274,7 +274,7 @@ public class Game{
                             System.out.print("Es gibt keine Kreuzer mehr!\n");
                             break;
                         }
-                        setBattleshipsInArray(4);
+                        player.setBattleshipsInArray(4);
                         cruiserCount--;
                         counter = 0;
                         break;
@@ -283,7 +283,7 @@ public class Game{
                             System.out.print("Es gibt keine Zerstoerer mehr!\n");
                             break;
                         }
-                        setBattleshipsInArray(3);
+                        player.setBattleshipsInArray(3);
                         destroyerCount--;
                         counter = 0;
                         break;
@@ -292,7 +292,7 @@ public class Game{
                             System.out.print("Es gibt keine U-Boote mehr!\n");
                             break;
                         }
-                        setBattleshipsInArray(2);
+                        player.setBattleshipsInArray(2);
                         submarineCount--;
                         counter = 0;
                         break;
@@ -310,7 +310,7 @@ public class Game{
     Integer ist und verlangt sonst die Eingabe eines Integers.
     @return Gibt die Eingabe als Integer zurück.
     */
-    public int checkInt() {
+    public static int checkInt() {
     
         //Scanner check = new Scanner(System.in);
         scan.nextLine();
@@ -333,7 +333,7 @@ public class Game{
     die Buchstaben in Integer in der Form a=0, A=0 -> j=9, J=9.
     @return gibt die char Eingabe als konvertierten Integer zurück.
     */
-    public int convertChar() {
+    public static int convertChar() {
 
         //Scanner scan = new Scanner(System.in);
         scan.nextLine();

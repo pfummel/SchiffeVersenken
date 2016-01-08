@@ -50,7 +50,7 @@ public class Player extends Arena{
     @param shipLength Die Laenge des zu setzenden Schiffes.
     */
 
-    public static void setBattleshipsInArray(int shipLength) {
+    public void setBattleshipsInArray(int shipLength) {
             
             boolean conflict;
             int input, row, col, failedRow, failedCol;
@@ -59,7 +59,7 @@ public class Player extends Arena{
             System.out.print("Die Schiffe werden horizontal oder vertikal von der gewaehlten Koordinate aus platziert!\n");
             do {
                 System.out.print("Soll das Schiff (1) horizontal oder (2) vertikal platziert werden?\n");
-                input = game.checkInt();
+                input = Game.checkInt();
             } while (!(input >= 1 && input <= 2));
             
             // Fragt nach Koordinaten fuer horizontal zu setzende Schiffe 
@@ -73,7 +73,7 @@ public class Player extends Arena{
                     System.out.print("Zeile: ");
                     
                     do {
-                        row = game.convertChar();
+                        row = Game.convertChar();
                         if (!(row >= 0 && row <= 9 )) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
@@ -83,7 +83,7 @@ public class Player extends Arena{
                     System.out.print("Spalte: ");
                     
                     do {
-                        col = game.checkInt();
+                        col = Game.checkInt();
                         if (!(row >= 0 && col <= 10 - shipLength)) {
                             System.out.print("Ungueltige Eingabe! Dein Schiff ragt ueber den Spielfeldrand!\nNochmal: ");
                         }
