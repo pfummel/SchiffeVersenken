@@ -29,17 +29,17 @@ public class Game{
     /**
     Konstante fuer Anzahl der Kreuzer
     */
-    public static final int CRUISER = 2; // 4 Kaestchen
+    public static final int CRUISER = 0; // 4 Kaestchen
     
     /**
     Konstante fuer Anzahl der Zerstoerer
     */
-    public static final int DESTROYER = 3; // 3 Kaestchen
+    public static final int DESTROYER = 0; // 3 Kaestchen
     
     /**
     Konstante fuer Anzahl der U-Boote
     */
-    public static final int SUBMARINE = 4; // 2 Kaestchen
+    public static final int SUBMARINE = 0; // 2 Kaestchen
 
     /**
     Konstruktor fuer Game, der die Objekte enemy und player erzeugt, falls die Spielkonfiguration gueltig ist.
