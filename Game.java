@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 /**
 Die Klasse Game kuemmert sich um die Logik des Programms, den Programmablauf und die Interaktion mit dem Benutzer.
+@author David Nancekievill Matrikelnummer Gruppe C
+@author Markus Berning Matrikelnummer Gruppe C
 */
-public class Game{
+public class Game {
 
     /**
     Objekt Player, das das Spielfeld des Spielers enhaelt.
@@ -44,18 +46,16 @@ public class Game{
     /**
     Konstruktor fuer Game, der die Objekte enemy und player erzeugt, falls die Spielkonfiguration gueltig ist.
     */
-    public Game(){
-        int BoxesWithShips = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
+    public Game() {
+        int boxesWithShips = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
 
-        if (BATTLESHIP < 0 || CRUISER < 0 || DESTROYER < 0 || SUBMARINE < 0){
+        if (BATTLESHIP < 0 || CRUISER < 0 || DESTROYER < 0 || SUBMARINE < 0) {
             System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
             System.exit(0);
-        }
-        else if (BoxesWithShips == 0){
+        } else if (boxesWithShips == 0) {
             System.out.println("Ungueltige Spielkonfiguration! Das Spiel wird beendet.");
             System.exit(0);
-        }
-        else {
+        } else {
             enemy = new Enemy();
             player = new Player();
         }
@@ -65,7 +65,7 @@ public class Game{
     Methode, die fuer den Programmablauf verantwortlich ist. Zuerst werden die Schiffe im Spielfeld gesetzt,
     anschließend koennen die Methoden attack, defend etc aufgerufen werden.
     */
-    public void start(){
+    public void start() {
     
         //Scanner scan = new Scanner(System.in);
         int input;
@@ -106,10 +106,10 @@ public class Game{
     Die Methode überprüft mithilfe der Methode numberOFHits() der Klasse Enemy,
     ob alle gegnerischenSchiffe versenkt wurden.
     */
-    private void victory(){
+    private void victory() {
         int hitsToWin = (BATTLESHIP * 5) + (CRUISER * 4) + (DESTROYER * 3) + (SUBMARINE * 2);
         
-        if (hitsToWin == enemy.numberOfHits()){                     //Auswahl der Schiffe des Gegners muss gleich sein!
+        if (hitsToWin == enemy.numberOfHits()) {                     //Auswahl der Schiffe des Gegners muss gleich sein!
             System.out.println("Glueckwunsch du hast das Spiel gewonnen!");
             System.exit(0);
         }
@@ -120,7 +120,7 @@ public class Game{
     Die Methode überprueft, mithilfe der Methode isAlive() der Klasse Player,
     ob der Spieler verloren hat.
     */
-    private void defeat(){
+    private void defeat() {
     
         if (player.isAlive() == false) {
             System.out.println("Schade du hast das Spiel verloren!");
@@ -133,7 +133,7 @@ public class Game{
     Methode, die dazu dient den Gegner anzgreifen und Markierungen
     im Feld des Gegners vorzunehmen.
     */
-    private void attack(){
+    private void attack() {
         //Scanner scan = new Scanner(System.in);
         int counter = 0;
         int input, row, col;
@@ -192,7 +192,7 @@ public class Game{
     /**
     Methode, die dazu dient einen gegnerischen Schuss zu erhalten.
     */
-    private void defend(){
+    private void defend() {
         
         int row = 0, col = 0;
         boolean counter;
@@ -225,7 +225,7 @@ public class Game{
                 }
             } while (!(row >= 0 && col <= 9));
             
-            counter = player.takeHit(row,col);
+            counter = player.takeHit(row, col);
             defeat();
             
         } while (counter);
@@ -234,7 +234,7 @@ public class Game{
     /**
     Methode, die die Schiffe im Feld des Spielers plaziert.
     */
-    private void setShips(){
+    private void setShips() {
         
         int counter = 1;
         int input;
